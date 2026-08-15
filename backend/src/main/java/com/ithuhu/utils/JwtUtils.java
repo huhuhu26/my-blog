@@ -18,7 +18,7 @@ public class JwtUtils {
     private static final long EXPIRATION_TIME = 864_000_000;
 
     //获取加密密钥
-    private static SecretKey getSecretKey() {
+    public static SecretKey getSecretKey() {
         byte[] secretKeyBytes = Base64.getDecoder().decode(SECRET_KEY);
         return Keys.hmacShaKeyFor(secretKeyBytes);
     }

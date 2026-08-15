@@ -10,15 +10,10 @@ spring:
     password: 261219Hyc
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-# MyBatis-Plus ??
-mybatis-plus:
+#Mybatis的相关配置
+mybatis:
   configuration:
-    # ???????????? user_id ????? Java ?? userId
-    map-underscore-to-camel-case: true
-    # ??SQL??????????????
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  global-config:
-    db-config:
-      # ??????
-      id-type: auto
+    #开启驼峰命名映射开关
+    map-underscore-to-camel-case:  true
 
