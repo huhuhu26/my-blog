@@ -13,7 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(org.springframework.web.servlet.config.annotation.InterceptorRegistry registry) {
         registry.addInterceptor(jwtInterceptor)
-                .addPathPatterns("/api/article/**")
-                .excludePathPatterns("/api/user/register", "/api/user/login");
+                .addPathPatterns("/article/**")
+                .excludePathPatterns("/user/register", "/user/login");
     }
 }

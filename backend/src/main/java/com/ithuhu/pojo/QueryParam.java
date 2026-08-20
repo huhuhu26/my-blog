@@ -11,4 +11,7 @@ import lombok.NoArgsConstructor;
 public class QueryParam {
     private int page = 1;
     private int pageSize = 10;
+    private boolean onlyMine = false;
+    private String keyword = "";// 搜索关键字
+    private Integer categoryId;
 }

@@ -50,6 +50,7 @@ public class UserServiceImpl implements UserService {
         claims.put("id", u.getId());
         claims.put("username", u.getUsername());
         String token = JwtUtils.generateToken(claims);
-        return Result.success(token);
+        user.setToken(token);
+        return Result.success(user);
     }
 }

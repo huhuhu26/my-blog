@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ithuhu.mapper.ArticleMapper">
+
+
+    <select id="selectList" resultType="com.ithuhu.pojo.DTO.ArticleListVO">
+        select a.id, a.title, u.username as author, a.category_id, a.create_at, a.update_at, c.name as category
+        from article a left join user u on a.user_id = u.id left join category c on a.category_id = c.id
+        <where>
+            <if test="queryParam.onlyMine">
+                a.user_id = #{userId}
+            </if>
+            <if test="queryParam.keyword != ''and queryParam.keyword != null">
+                and a.title like CONCAT('%', #{queryParam.keyword}, '%')
+            </if>
+            <if test="queryParam.categoryId != null">
+                and a.category_id = #{queryParam.categoryId}
+            </if>
+        </where>
+    </select>
+
+    <select id="getById" resultType="com.ithuhu.pojo.DTO.ArticleDetailVO">
+        select a.id, a.title, u.username as author, a.category_id, a.create_at, a.update_at, a.content, a.user_id, c.name as category
+        from article a left join user u on a.user_id = u.id left join category c on a.category_id = c.id where a.id = #{id}
+    </select>
+
+</mapper>
